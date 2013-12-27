@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# Determines what the "commit difference" is between your local branch and it's upstream copy.
+#
+# Adapted from http://zanshin.net/2013/01/25/git-log-command-showing-commit-differences-between-local-and-remote-repository/
+
+main() {
+	git log @{u}...HEAD --name-status --decorate --boundary --pretty=format:'%Cred%h%Creset %C(bold)%s%d%Creset %C(bold cyan)by %an%Creset %C(bold magenta)%cr%Creset' --abbrev-commit --date=relative $@
+}
+
+main "$@"
